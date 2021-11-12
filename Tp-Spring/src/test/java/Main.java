@@ -40,11 +40,12 @@ public class Main {
 		
 		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+		DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		
 
-		   //convert String to LocalDate
-        //LocalDate localDate = LocalDate.parse("dd/MM/yyyy", formatter);
-       // LocalDateTime localDateT = LocalDateTime.parse("dd/MM/yyyy HH:mm", formatter);
+
+        
+       
         
         
 		//IAdresseRepo adresseRepo = spring.getBean(IAdresseRepo .class);
@@ -91,11 +92,17 @@ public class Main {
 		
 		Adresse ad2 = new Adresse("Rue Boule", "5e étage","84000","Avignon");
 		
-		Patient tutu = new Patient (Civilite.MLLE,"Tutu","Lili","0678898265",LocalDate.parse("05/01/1988"),"patient1Lili@patient.fr",true,patient1,ad2);
+		String dateN1 = "05/01/1988";
+		LocalDate localDate1 = LocalDate.parse(dateN1, formatter2);
+		Patient tutu = new Patient (Civilite.MLLE,"Tutu","Lili","0678898265",localDate1,"patient1Lili@patient.fr",true,patient1,ad2);
 		
+		String datec1 = "13/12/2021 10:30";
+		String datec2 = "13/12/2021 11:30";
+		 LocalDateTime localDateT1 = LocalDateTime.parse(datec1, formatter);
+		 LocalDateTime localDateT2 = LocalDateTime.parse(datec2, formatter);
 		
-		Creneau c1 = new Creneau(LocalDateTime.parse("13/12/2021 10:30"),15,true,bulle,cabinet);
-		Creneau c2 = new Creneau(LocalDateTime.parse("13/12/2021 11:30"),15,true,bulle,cabinet);
+		Creneau c1 = new Creneau(localDateT1,15,true,bulle,cabinet);
+		Creneau c2 = new Creneau(localDateT2,15,true,bulle,cabinet);
 		
 		List<Creneau> crenaux = new ArrayList<Creneau>();
 		crenaux.add(c1);
