@@ -2,6 +2,9 @@ package Appli.Class;
 
 import java.util.Objects;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Adresse {
 	
  private String voie;

@@ -4,30 +4,51 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Patient {
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Version;
 
+@Entity
+@Table(name = "patient")
+@DiscriminatorColumn(name = "patient")
+public class Patient {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+	@Version
 	private int version;
-	
+	@Enumerated(EnumType.STRING)
+	@Column(name = "civilite", length = 5)
 	private Civilite civilite;
-	
+	@Column(name = "nom", length = 100)
 	private String nom;
-	
+	@Column(name = "prenom", length = 100)
 	private String prenom;
-	
+	@Column(name = "telephone", length = 20)
 	private String telephone;
-	
+	@Column(name = "dtNaissance", length = 20)
 	private LocalDate dtNaissance;
-	
+	@Column(name = "email", length = 250)
 	private String email;
-	
+	@Column(name = "principal", length = 5)
 	private boolean principal;
 
+	@OneToMany(mappedBy = "patient")
 	private List<Consultation> consultations = new ArrayList<Consultation>();
-	
+	@ManyToOne
 	private Utilisateur compte;
-	
+	@Embedded
 	private Adresse adresse;
 	
 	public Patient() {
