@@ -3,27 +3,56 @@ package Appli.Class;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
+@Entity
 public class Praticien {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "civilite", length = 5)
 	private Civilite civilite;
+	@Column(name = "nom", length = 255)
 	private String nom;
+	@Column(name = "prenom", length = 255)
 	private String prenom;
+	@Column(name = "telephone", length = 255)
 	private String telephone;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "secteur", length = 50)
 	private Secteur secteur;
+	@Column(name = "carte_vitale", length = 50)
 	private boolean carteVitale;
+	@Column(name = "photo", length = 255)
 	private String photo;
+	@Column(name = "carte_bancaire", length = 50)
 	private boolean carteBancaire;
+	@Column(name = "cheque", length = 50)
 	private boolean cheque;
+	@Column(name = "espace", length = 50)
 	private boolean espace;
+	@Column(name = "duree_creneau", length = 50)
 	private Integer dureeCreneau;
 	
 	private int version;
 	
-	private List<Utilisateur> utilisateurs = new ArrayList<Utilisateur>();
+	@OneToOne
+	private Utilisateur utilisateur;
+	@OneToMany(mappedBy = "praticien")
 	private List<Lieu> lieux = new ArrayList<Lieu>();
+	@OneToMany(mappedBy = "praticien")
 	private List<Specialite> specialites = new ArrayList<Specialite>();
+	@OneToMany(mappedBy = "praticien")
 	private List<Creneau> creneaux = new ArrayList<Creneau>();
 	
 
@@ -53,7 +82,7 @@ public class Praticien {
 
 	public Praticien(Civilite civilite, String nom, String prenom, String telephone, Secteur secteur,
 			boolean carteVitale, String photo, boolean carteBancaire, boolean cheque, boolean espace,
-			Integer dureeCreneau, int version, List<Utilisateur> utilisateurs, List<Lieu> lieux,
+			Integer dureeCreneau, int version, Utilisateur utilisateur, List<Lieu> lieux,
 			List<Specialite> specialites, List<Creneau> creneaux) {
 		super();
 		this.civilite = civilite;
@@ -68,10 +97,23 @@ public class Praticien {
 		this.espace = espace;
 		this.dureeCreneau = dureeCreneau;
 		this.version = version;
-		this.utilisateurs = utilisateurs;
+		this.utilisateur = utilisateur;
 		this.lieux = lieux;
 		this.specialites = specialites;
 		this.creneaux = creneaux;
+	}
+
+	
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public Civilite getCivilite() {
@@ -152,13 +194,6 @@ public class Praticien {
 		this.version = version;
 	}
 
-	public List<Utilisateur> getUtilisateurs() {
-		return utilisateurs;
-	}
-
-	public void setUtilisateurs(List<Utilisateur> utilisateurs) {
-		this.utilisateurs = utilisateurs;
-	}
 
 	public List<Lieu> getLieux() {
 		return lieux;
