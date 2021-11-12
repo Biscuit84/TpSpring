@@ -34,15 +34,13 @@ public class Creneau {
 	@ManyToOne
 	private Consultation consultation;
 	
-	public Creneau( LocalDateTime debut, Integer duree, boolean dispo, Praticien praticien, Lieu lieu,
-			Consultation consultation) {
+	public Creneau( LocalDateTime debut, Integer duree, boolean dispo, Praticien praticien, Lieu lieu) {
 		super();
 		this.debut = debut;
 		this.duree = duree;
 		this.dispo = dispo;
 		this.praticien = praticien;
 		this.lieu = lieu;
-		this.consultation = consultation;
 	}
 
 	public Creneau() {

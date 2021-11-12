@@ -7,6 +7,7 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Adresse {
 	
+	
  private String voie;
  private String complement;
  private String codePostal;

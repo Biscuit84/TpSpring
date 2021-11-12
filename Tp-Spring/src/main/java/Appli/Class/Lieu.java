@@ -32,9 +32,8 @@ public class Lieu {
 	@OneToMany(mappedBy = "lieu")
 	private List<Creneau> creneaux = new ArrayList();
 	
-	public Lieu(Long id, String nom, String information) {
+	public Lieu(String nom, String information) {
 		super();
-		Id = id;
 		this.nom = nom;
 		this.information = information;
 	}

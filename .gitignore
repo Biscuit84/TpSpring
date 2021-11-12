@@ -6,3 +6,5 @@ Tp-Spring/.project
 Tp-Spring/.settings/
 
 Tp-Spring/target/
+
+Tp-Spring/src/main/resources/db.properties

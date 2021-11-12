@@ -24,7 +24,6 @@ public class Consultation {
  private Long id;
  @Column(name = "civilite")
  private String instruction;
- @Column(name = "patient")
  @ManyToOne
  private Patient patient;
  
@@ -46,9 +45,8 @@ public Consultation() {
 
 
 
-public Consultation(Long id, String instruction, Patient patient, Motif motif) {
+public Consultation(String instruction, Patient patient, Motif motif) {
 	super();
-	this.id = id;
 	this.instruction = instruction;
 	this.patient = patient;
 	this.motif = motif;
