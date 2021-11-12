@@ -3,22 +3,39 @@ package Appli.Class;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Specialite {
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Version;
 
+@Entity
+@Table(name = "specialite")
+@DiscriminatorColumn(name = "specialite")
+public class Specialite {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Version
 	private int version;
 	
 	private String nom;
 	
+	@OneToMany(mappedBy="specialite")
 	private List<Motif> motifs = new ArrayList<Motif>();
-	
+	@ManyToOne
 	private Praticien praticien;
 
+	
 	public Specialite() {
 		super();
 	}
-
 
 
 	public Specialite(String nom, Praticien praticien) {

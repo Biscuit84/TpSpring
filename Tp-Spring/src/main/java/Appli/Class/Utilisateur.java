@@ -1,16 +1,38 @@
 package Appli.Class;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Version;
+
+@Entity
+@Table(name = "utilisateur")
+@DiscriminatorColumn(name = "utilisateur")
 public class Utilisateur {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+	@Version
 	private int version;
-	
+	@Column(name = "email")
 	private String email;
-	
+	@Column(name = "motDePasse")
 	private String motDePasse;
-	
+	@Enumerated(EnumType.STRING)
+	@Column(name = "type")
 	private Type type;
+	
+	
+	
+	
+	
 	
 	
 	public Utilisateur() {
@@ -68,11 +90,6 @@ public class Utilisateur {
 
 	public Long getId() {
 		return id;
-	}
-
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 

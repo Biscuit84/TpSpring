@@ -2,15 +2,36 @@ package Appli.Class;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Version;
+
+@Entity
+@Table(name = "creneaux")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "creneaux")
 public class Creneau {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Version
 	private int version;
 	private LocalDateTime debut;
 	private Integer duree;
 	private boolean dispo;
+	@ManyToOne
 	private Praticien praticien;
+	@ManyToOne
 	private Lieu lieu;
+	@ManyToOne
 	private Consultation consultation;
 	
 	public Creneau( LocalDateTime debut, Integer duree, boolean dispo, Praticien praticien, Lieu lieu,
