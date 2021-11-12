@@ -98,8 +98,8 @@ public class Main {
 		
 		String datec1 = "13/12/2021 10:30";
 		String datec2 = "13/12/2021 11:30";
-		 LocalDateTime localDateT1 = LocalDateTime.parse(datec1, formatter);
-		 LocalDateTime localDateT2 = LocalDateTime.parse(datec2, formatter);
+		LocalDateTime localDateT1 = LocalDateTime.parse(datec1, formatter);
+		LocalDateTime localDateT2 = LocalDateTime.parse(datec2, formatter);
 		
 		Creneau c1 = new Creneau(localDateT1,15,true,bulle,cabinet);
 		Creneau c2 = new Creneau(localDateT2,15,true,bulle,cabinet);
