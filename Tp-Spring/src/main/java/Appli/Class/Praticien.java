@@ -15,6 +15,8 @@ public class Praticien {
 	private boolean espace;
 	private Integer dureeCreneau;
 	
+	private int version;
+	
 		
 	public Praticien() {
 		super();

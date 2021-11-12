@@ -4,6 +4,7 @@ public class Lieu {
 	private Long Id;
 	private String nom;
 	private String information;
+	private int version;
 	public String getNom() {
 		return nom;
 	}
