@@ -1,5 +1,6 @@
 package Appli.Class;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Specialite {
@@ -10,7 +11,7 @@ public class Specialite {
 	
 	private String nom;
 	
-	private List<Motif> motifs;
+	private List<Motif> motifs = new ArrayList<Motif>();
 	
 	private Praticien praticien;
 

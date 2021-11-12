@@ -1,6 +1,8 @@
 package Appli.Class;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Patient {
 
@@ -22,7 +24,7 @@ public class Patient {
 	
 	private boolean principal;
 
-	private List<Consultation> historique;
+	private List<Consultation> consultations = new ArrayList<Consultation>();
 	
 	private Utilisateur compte;
 	
@@ -143,14 +145,17 @@ public class Patient {
 
 
 
-	public List<Consultation> getHistorique() {
-		return historique;
+
+
+
+	public List<Consultation> getConsultations() {
+		return consultations;
 	}
 
 
 
-	public void setHistorique(List<Consultation> historique) {
-		this.historique = historique;
+	public void setConsultations(List<Consultation> consultations) {
+		this.consultations = consultations;
 	}
 
 

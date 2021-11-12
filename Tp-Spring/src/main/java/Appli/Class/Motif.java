@@ -1,5 +1,8 @@
 package Appli.Class;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Motif {
 
 	private Long id;
@@ -10,7 +13,7 @@ public class Motif {
 	
 	private int nbCreneau;
 
-	private List<Consultation> consultation;
+	private List<Consultation> consultation = new ArrayList<Consultation>();
 	
 	private Specialite specialite;
 	
