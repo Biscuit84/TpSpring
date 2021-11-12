@@ -8,4 +8,4 @@ public class Consultation {
  private String instruction;
  private Patient patient;
  private List<Creneau> creneaux= new ArrayList<Creneau>();
-}
+}                  
