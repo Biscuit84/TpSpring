@@ -3,18 +3,33 @@ package Appli.Class;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Motif {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	private int version;
-	
+	@Column(name = "nom", length = 255)
 	private String nom;
-	
+	@Column(name = "nombre_creneau", length = 50)
 	private int nbCreneau;
 
+	@OneToMany(mappedBy = "motif")
 	private List<Consultation> consultation = new ArrayList<Consultation>();
 	
+	@ManyToOne
+	@JoinColumn(name="id_specialite")
 	private Specialite specialite;
 	
 	public Motif() {
