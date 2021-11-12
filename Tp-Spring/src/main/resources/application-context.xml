@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+	<!-- Activer les annotations (optionnel si <context:component-scan> positionné)-->
+	<context:annotation-config/>
+
+	<!-- Scanne des packages contenant des classes avec Annotations Spring -->
+	<context:component-scan base-package="sopra.orchestre"/>
+
+	<bean id="pianiste" class="sopra.orchestre.Pianiste">
+		<constructor-arg name="instrument" ref="piano"/>
+	</bean>
+	
+	<bean id="piano" class="sopra.orchestre.Piano"></bean>
+	
+	<bean id="synthe" class="sopra.orchestre.Synthe"></bean>
+	
+	<bean id="monPremierAspect" class="sopra.orchestre.aspect.MonPremierAspect"></bean>
+	
+
+	<aop:config>
+		<aop:pointcut expression="execution(* *.toString(..))" id="monPointcut"/>
+		
+		<aop:aspect ref="monPremierAspect">
+			<aop:before pointcut-ref="monPointcut" method="aspectPourBefore"></aop:before>
+			<aop:after-returning pointcut-ref="monPointcut" method="aspectPourAfterReturning" returning="retour"/>
+			<aop:after-throwing pointcut-ref="monPointcut" method="aspectPourErreur" throwing="e"/>
+		</aop:aspect>
+				
+	</aop:config>
+	
+	<aop:aspectj-autoproxy/>
+</beans>
