@@ -11,8 +11,6 @@ public class Utilisateur {
 	private String motDePasse;
 	
 	private Type type;
-
-	
 	
 	
 	public Utilisateur() {
@@ -70,6 +68,11 @@ public class Utilisateur {
 
 	public Long getId() {
 		return id;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 

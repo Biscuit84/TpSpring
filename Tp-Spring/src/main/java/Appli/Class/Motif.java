@@ -10,16 +10,21 @@ public class Motif {
 	
 	private int nbCreneau;
 
+	private List<Consultation> consultation;
+	
+	private Specialite specialite;
 	
 	public Motif() {
 		super();
 	}
 
 
-	public Motif(String nom, int nbCreneau) {
+
+	public Motif(String nom, int nbCreneau, Specialite specialite) {
 		super();
 		this.nom = nom;
 		this.nbCreneau = nbCreneau;
+		this.specialite = specialite;
 	}
 
 
@@ -27,8 +32,15 @@ public class Motif {
 		return id;
 	}
 
+	
 
 	
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+
 	public int getVersion() {
 		return version;
 	}
@@ -59,10 +71,38 @@ public class Motif {
 	}
 
 
+
+	
+	public List<Consultation> getConsultation() {
+		return consultation;
+	}
+
+
+
+	public void setConsultation(List<Consultation> consultation) {
+		this.consultation = consultation;
+	}
+
+
+
+	public Specialite getSpecialite() {
+		return specialite;
+	}
+
+
+
+	public void setSpecialite(Specialite specialite) {
+		this.specialite = specialite;
+	}
+
+
+
 	@Override
 	public String toString() {
-		return "Motif [nom=" + nom + ", nbCreneau=" + nbCreneau + "]";
+		return "Motif [nom=" + nom + ", nbCreneau=" + nbCreneau + ", specialite=" + specialite + "]";
 	}
+
+
 	
 	
 	

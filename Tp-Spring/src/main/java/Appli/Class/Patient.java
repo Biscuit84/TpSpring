@@ -22,14 +22,20 @@ public class Patient {
 	
 	private boolean principal;
 
+	private List<Consultation> historique;
+	
+	private Utilisateur compte;
+	
+	private Adresse adresse;
 	
 	public Patient() {
 		super();
 	}
 
 
+
 	public Patient(Civilite civilite, String nom, String prenom, String telephone, LocalDate dtNaissance, String email,
-			boolean principal) {
+			boolean principal, Utilisateur compte, Adresse adresse) {
 		super();
 		this.civilite = civilite;
 		this.nom = nom;
@@ -38,7 +44,10 @@ public class Patient {
 		this.dtNaissance = dtNaissance;
 		this.email = email;
 		this.principal = principal;
+		this.compte = compte;
+		this.adresse = adresse;
 	}
+
 
 
 	public int getVersion() {
@@ -125,13 +134,61 @@ public class Patient {
 		return id;
 	}
 
+	
+
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+
+	public List<Consultation> getHistorique() {
+		return historique;
+	}
+
+
+
+	public void setHistorique(List<Consultation> historique) {
+		this.historique = historique;
+	}
+
+
+
+	public Utilisateur getCompte() {
+		return compte;
+	}
+
+
+
+	public void setCompte(Utilisateur compte) {
+		this.compte = compte;
+	}
+
+
+
+	public Adresse getAdresse() {
+		return adresse;
+	}
+
+
+
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
+
+
 
 	@Override
 	public String toString() {
-		return "Patient [nom=" + nom + ", prenom=" + prenom + ", telephone=" + telephone + ", dtNaissance="
-				+ dtNaissance + ", email=" + email + ", principal=" + principal + "]";
+		return "Patient [civilite=" + civilite + ", nom=" + nom + ", prenom=" + prenom + ", telephone=" + telephone
+				+ ", dtNaissance=" + dtNaissance + ", email=" + email + ", principal=" + principal + ", compte="
+				+ compte + ", adresse=" + adresse + "]";
 	}
-	
+
+
+
+
 	
 	
 	

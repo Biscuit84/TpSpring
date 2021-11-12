@@ -1,5 +1,7 @@
 package Appli.Class;
 
+import java.util.List;
+
 public class Specialite {
 
 	private Long id;
@@ -7,15 +9,24 @@ public class Specialite {
 	private int version;
 	
 	private String nom;
+	
+	private List<Motif> motifs;
+	
+	private Praticien praticien;
 
 	public Specialite() {
 		super();
 	}
 
-	public Specialite(String nom) {
+
+
+	public Specialite(String nom, Praticien praticien) {
 		super();
 		this.nom = nom;
+		this.praticien = praticien;
 	}
+
+
 
 	public int getVersion() {
 		return version;
@@ -37,11 +48,43 @@ public class Specialite {
 		return id;
 	}
 
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+
+	public List<Motif> getMotifs() {
+		return motifs;
+	}
+
+
+
+	public void setMotifs(List<Motif> motifs) {
+		this.motifs = motifs;
+	}
+
+
+
+	public Praticien getPraticien() {
+		return praticien;
+	}
+
+
+
+	public void setPraticien(Praticien praticien) {
+		this.praticien = praticien;
+	}
+
+
+
 	@Override
 	public String toString() {
-		return "Specialite [nom=" + nom + "]";
+		return "Specialite [nom=" + nom + ", praticien=" + praticien + "]";
 	}
-	
+
 	
 	
 	
